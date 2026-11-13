@@ -1,0 +1,30 @@
+class Scorecard {
+    private final boolean[] results;
+    private int answerCount;
+
+    Scorecard(int totalQuestions) {
+        results = new boolean[totalQuestions];
+        answerCount = 0;
+    }
+
+    public void recordAnswer(boolean isCorrect) {
+        if (answerCount < results.length) {
+            results[answerCount] = isCorrect;
+            answerCount++;
+        } else {
+            System.out.println("All questions already answered");
+        }
+    }
+
+    public int getScore() {
+        int score = 0;
+
+        for (int i = 0; i < answerCount; i++) {
+            if (results[i]) {
+                score++;
+            }
+        }
+
+        return score;
+    }
+}
